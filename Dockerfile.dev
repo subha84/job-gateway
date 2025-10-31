@@ -1,0 +1,12 @@
+FROM node:25-alpine3.21
+WORKDIR /app
+COPY package.json ./
+COPY tsconfig.json ./
+COPY .npmrc ./
+COPY .env ./
+COPY src ./src
+COPY tools ./tools
+RUN ls -a
+RUN npm install
+EXPOSE 4000
+CMD ["npm", "run", "dev"]
